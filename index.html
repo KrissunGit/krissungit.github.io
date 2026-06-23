@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <iframe src="background.html" class="html-background"></iframe>
+    <div class="wrapper">
+        <nav class="sidebar">
+            <h2>☰</h2>
+            <ul>
+                <li><a href="#main" id="main" data-short="M" data-long="Main"></a></li>
+                <li><a href="#aboutme" id="aboutme" data-short="A" data-long="About me"></a></li>
+                
+                <li class="dropdown">
+                    <a href="#portfolio" id="portfolio" data-short="P" data-long="Portfolio"></a>
+                    <ul class="submenu">
+                        <li><a href="#project1" id="audioplayer" data-short="A" data-long="Audio Player"></a></li>
+                        <li><a href="#project2" id="chess" data-short="C" data-long="Chess"></a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#settings" data-short="S" data-long="Settings"></a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Welcome to the Dashboard</h1>
+            <p>This is where your main website content will go. The sidebar on the left stays fixed in width, while this area stretches to fill the rest of the screen.</p>
+        </main>
+    </div>
+
+</body>
+</html>
