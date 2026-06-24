@@ -30,7 +30,7 @@ function createParticles(count) {
     }
 }
 
-createParticles(100);
+createParticles(400);
 
 function update() {
     for (const p of particles) {

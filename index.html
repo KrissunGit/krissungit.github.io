@@ -6,25 +6,26 @@
     <title>Main</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <iframe src="background.html" class="html-background"></iframe>
+    <iframe src="background.html" class="html-background" style="opacity: 0.95;"></iframe>
     <div class="wrapper">
         <nav class="sidebar">
             <h2>☰</h2>
             <ul>
-                <li><a href="index.html" data-short="M" data-long="Main"></a></li>
-                <li><a href="aboutme.html" data-short="A" data-long="About me"></a></li>
+                <li><a href="#main" data-short="M" data-long="Main" id="nav-main"></a></li>
+                <li><a href="#about" data-short="A" data-long="About me" id="nav-about"></a></li>
                 
                 <li class="dropdown">
-                    <a href="portfolio.html" data-short="P" data-long="Portfolio"></a>
+                    <a href="#portfolio" data-short="P" data-long="Portfolio" id="nav-portfolio"></a>
                     <ul class="submenu">
-                        <li><a href="audio_player.html" data-short="A" data-long="Audio Player"></a></li>
-                        <li><a href="chess.html" data-short="C" data-long="Chess"></a></li>
+                        <li><a href="#audio-player" data-short="A" data-long="Audio Player" id="nav-audio-player"></a></li>
+                        <li><a href="#chess" data-short="C" data-long="Chess" id="nav-chess"></a></li>
                     </ul>
                 </li>
 
-                <li><a href="#settings" data-short="S" data-long="Settings"></a></li>
+                <li><a href="#settings" data-short="S" data-long="Settings" id="nav-settings"></a></li>
                 <li class="dropdown">
                     <a href="#language" data-short="L" data-long="Language" id="language-toggle" ></a>
                     <ul class="submenu">
@@ -35,9 +36,363 @@
             </ul>
         </nav>
 
+        <div class="player-container" style="display: none;">
+            <audio id="audio-player" src="sample.mp3"></audio>
+
+            <div class="custom-player">
+                <div class="player-controls">
+                    <button id="skip-previous-btn" class="control-btn" title="Previous Song">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+
+                    <button id="skip-backwards-btn" class="control-btn" title="Backward 10s">
+                        <i class="fas fa-backward"></i>
+                    </button>
+
+                    <button id="master-play-btn" class="control-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    
+                    <button id="skip-forward-btn" class="control-btn" title="Forward 10s">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                    
+                    <button id="skip-next-btn" class="control-btn" title="Next Song">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="progress-area">
+                    <span id="current-time">0:00</span>
+                    <input type="range" id="progress-bar" value="0" max="100">
+                    <span id="total-duration">0:00</span>
+                </div>
+
+                <div class="volume-area">
+                    <div class="volume-slider-container">
+                        <input type="range" id="volume-slider" value="100" max="100">
+                    </div>
+                    <button id="volume-btn" class="control-btn" title="Mute/Unmute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+
+                <button id="close-audio-player" aria-label="Close Player">✕</button>
+            </div>
+        </div>
+
         <main class="main-content">
-            <h1>Welcome to the Dashboard</h1>
-            <p>This is where your main website content will go. The sidebar on the left stays fixed in width, while this area stretches to fill the rest of the screen.</p>
+            <div class="page" id="page-main">
+                <div class="page" id="english-main" >
+                    <h1 class="reveal-text" style="margin-top: 20rem; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);" data-delay="0">Welcome to my personal website!</h1>
+                    <p class="reveal-text" data-delay="0" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);">
+                        This is a space where I showcase my projects,
+                    </p>
+                    <p class="reveal-text" data-delay="0" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);">
+                        And it acts as a hub for my professional and personal information.
+                    </p>
+
+                    <p class="reveal-text" style="margin-top: 15rem; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);" data-delay="200" >
+                        Use the sidebar to navigate through the different sections of the website.
+                    </p>
+                </div>
+                <div class="page" id="latvian-main" style="display: none;">
+                    <h1 class="reveal-text" style="margin-top: 20rem;" data-delay="0">Sveicināti manā mājaslapā!!</h1>
+                    <p class="reveal-text" data-delay="0">
+                        This is a space where I showcase my projects,
+                    </p>
+                    <p class="reveal-text" data-delay="0">
+                        And it acts as a hub for my professional and personal information.
+                    </p>
+
+                    <p class="reveal-text" style="margin-top: 15rem;" data-delay="200">
+                        Use the sidebar to navigate through the different sections of the website.
+                    </p>
+                </div>
+            </div>
+            <div class="page" id="page-about" style="display: none;">
+                <div id="aboutme-section">
+                    <div class="page" id="english-aboutme">
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+
+                        <div class="text-container">
+                            <h1 class="reveal-text">General Info</h1>
+                            <h3 class="reveal-text">Kristers Sunne</h3>
+                            <h3 class="reveal-text">University email: </h3>
+                            <p class="reveal-text" style="margin-left: 20px;">
+                                kristers.sunne@edu.rtu.lv
+                            </p>
+                            <h3 class="reveal-text">Personal email: </h3>
+                            <p class="reveal-text" style="margin-left: 20px;">
+                                kristerssunne2005@gmail.com
+                            </p>
+                            <h3 class="reveal-text">Occupation: </h3>
+                            <p class="reveal-text" style="margin-left: 20px;">
+                                Software Engineering Student
+                            </p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Professional Summary</h1>
+                            <p class="reveal-text">
+                                I am a dedicated Software Engineering student entering my final year at Riga Technical University, building upon a strong foundational education from Ogre State Gymnasium (Engineering focus). I am a highly motivated, self-driven learner with a deep passion for exploring new technologies, software architecture, and game development. I am fully adaptable and ready to rapidly deepen my knowledge or master new languages and tools to meet project demands.
+                            </p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Technical Skills:</h1>
+                            <h3 class="reveal-text">Proficient (Academic & Projects):</h3>
+                            <p class="reveal-text">
+                                Java, Javascript, C#, C++, Python, MySQL
+                            </p>
+                            <h3 class="reveal-text">Foundational & Self-Taught:</h3>
+                            <p class="reveal-text">
+                                Rust, Typescript, GDScript (Godot engine), GML (GameMaker Studio 2), SQLite
+                            </p>
+                            <h3 class="reveal-text">Tools & DevOps:</h3>
+                            <p class="reveal-text">
+                                Git / GitHub, Docker, VSCode (Preferred)
+                            </p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Key Highlights & Core Strengths</h1>
+                            <h3 class="reveal-text">Versatile Language Base:</h3>
+                            <p class="reveal-text">Comfortable switching between object-oriented, functional, and scripting languages depending on project requirements.</p>
+                            <h3 class="reveal-text">Proactive Self-Starter:</h3>
+                            <p class="reveal-text">Independently explored modern languages like Rust and Go, alongside specialized game engines (Godot, GameMaker).</p>
+                            <h3 class="reveal-text">Agile Learner:</h3>
+                            <p class="reveal-text">Proven ability to pick up domain-specific languages (like GDScript and GML) and data management systems quickly.</p>
+                            <h3 class="reveal-text">Modern Workflow Ready:</h3>
+                            <p class="reveal-text">Experienced in version control with Git/GitHub and containerization using Docker.</p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Project Examples</h1>
+                            <h3 class="reveal-text">Amazon Price & Product Scraper (Python):</h3>
+                            <p class="reveal-text">Developed a custom web scraper designed to parse and extract product data, pricing, and availability from Amazon. Utilized libraries like BeautifulSoup/Selenium to navigate dynamic elements and handled data serialization for future analysis.</p>
+                            <h3 class="reveal-text">Full-Stack Desktop Audio Player (Electron, Go, TypeScript):</h3>
+                            <p class="reveal-text">Built a cross-platform desktop application utilizing an Electron frontend (HTML/CSS/JS) and a high-performance Go backend. Features include audio downloading, local playlist management, and a custom structured database to index and cache track metadata.</p>
+                            <h3 class="reveal-text">GIPHY Browser (Flutter & Dart):</h3>
+                            <p class="reveal-text">Developed a responsive mobile/desktop GIF browsing application by integrating the third-party GIPHY API. Implemented asynchronous API fetching, smooth infinite scrolling, and cross-platform UI rendering.</p>
+                            <h3 class="reveal-text">Minecraft Multiplayer Synchronization Mod (Java):</h3>
+                            <p class="reveal-text">Reverse-engineered and modified core Minecraft mechanics to synchronize health, hunger, and inventory states between two players in real-time. Handled server-client state management and network packet manipulation.</p>
+                            <h3 class="reveal-text">Adversarial Game AI & Logic (Python):</h3>
+                            <p class="reveal-text">Served as the core algorithmic developer in a university team project, designing a MiniMax algorithm for a mathematical strategy game. Programmed the recursive decision-tree logic, state evaluation functions, and game-state mutation rules.</p>
+                            <h3 class="reveal-text">2D Platformer (GameMaker Language):</h3>
+                            <p class="reveal-text">Designed and scripted player physics, collision detection, and level progression systems for an educational project.</p>
+                            <h3 class="reveal-text">ECS Architecture Tester (Rust & Bevy):</h3>
+                            <p class="reveal-text">Developed a prototype platformer to evaluate the performance and structure of the Data-Driven Entity Component System (ECS) inside the Bevy engine.</p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                    </div>
+
+                    <div class="page" id="latvian-aboutme" style="display: none;">
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+
+                        <div class="text-container">
+                            <h1 class="reveal-text">Vispārīgā informācija</h1>
+                            <h3 class="reveal-text">Kristers Sunne</h3>
+                            <h3 class="reveal-text">Universitātes e-pasts: </h3>
+                            <p class="reveal-text" style="margin-left: 20px;">
+                                kristers.sunne@edu.rtu.lv
+                            </p>
+                            <h3 class="reveal-text">Personīgais e-pasts: </h3>
+                            <p class="reveal-text" style="margin-left: 20px;">
+                                kristerssunne2005@gmail.com
+                            </p>
+                            <h3 class="reveal-text">Nodarbošanās: </h3>
+                            <p class="reveal-text" style="margin-left: 20px;">
+                                Programmatūras inženierijas students
+                            </p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Profesionālais kopsavilkums</h1>
+                            <p class="reveal-text">
+                                Esmu mērķtiecīgs Programmatūras inženierijas students, kurš uzsāk savu pēdējo studiju gadu Rīgas Tehniskajā universitātē, balstoties uz spēcīgu pamata izglītību, kas iegūta Ogres Valsts ģimnāzijā (inženierzinātņu virzienā). Esmu augsti motivēts un patstāvīgs jaunāko tehnoloģiju, programmatūras arhitektūras un spēļu izstrādes pētnieks. Spēju ātri adaptēties un esmu gatavs strauji padziļināt savas zināšanas vai apgūt jaunas programmēšanas valodas un rīkus, lai sasniegtu projektu mērķus.
+                            </p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Tehniskās prasmes:</h1>
+                            <h3 class="reveal-text">Padziļinātas zināšanas (akadēmiskajā vidē un projektos):</h3>
+                            <p class="reveal-text">
+                                Java, Javascript, C#, C++, Python, MySQL
+                            </p>
+                            <h3 class="reveal-text">Pamatzināšanas un pašmācība:</h3>
+                            <p class="reveal-text">
+                                Rust, Typescript, GDScript (Godot dzinējs), GML (GameMaker Studio 2), SQLite
+                            </p>
+                            <h3 class="reveal-text">Rīki un DevOps:</h3>
+                            <p class="reveal-text">
+                                Git / GitHub, Docker, VSCode (prioritāte)
+                            </p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Galvenās priekšrocības un stiprās puses</h1>
+                            <h3 class="reveal-text">Daudzpusīga valodu bāze:</h3>
+                            <p class="reveal-text">Spēja viegli pārslēgties starp objektorientētām, funkcionālām un skriptu valodām atkarībā no konkrētā projekta prasībām.</p>
+                            <h3 class="reveal-text">Proaktīva pašiniciatīva:</h3>
+                            <p class="reveal-text">Patstāvīgi izpētītas mūsdienīgas valodas, piemēram, Rust un Go, kā arī specializēti spēļu dzinēji (Godot, GameMaker).</p>
+                            <h3 class="reveal-text">Ātra mācīšanās spēja:</h3>
+                            <p class="reveal-text">Pierādīta prasme īsā laikā apgūt specifiskas nišas valodas (kā GDScript un GML) un datu pārvaldības sistēmas.</p>
+                            <h3 class="reveal-text">Gatavība mūsdienīgai darba plūsmai:</h3>
+                            <p class="reveal-text">Pieredze darbā ar versiju kontroli (Git/GitHub) un aplikāciju konteinerizāciju (Docker).</p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                        <div class="text-container">
+                            <h1 class="reveal-text">Projektu piemēri</h1>
+                            <h3 class="reveal-text">Amazon cenu un produktu skrāpis / datu ieguvējs (Python):</h3>
+                            <p class="reveal-text">Izstrādāts pielāgots tīmekļa skrāpis (web scraper), kas paredzēts produktu datu, cenu un pieejamības analizēšanai un izgūšanai no Amazon platformas. Izmantotas BeautifulSoup un Selenium bibliotēkas, lai navigētu pa dinamiskiem lapas elementiem, kā arī realizēta datu serializācija turpmākai analīzei.</p>
+                            <h3 class="reveal-text">Full-Stack darbvirsmas audio atskaņotājs (Electron, Go, TypeScript):</h3>
+                            <p class="reveal-text">Izveidota starpplatformu darbvirsmas lietotne, izmantojot Electron priekšgalsistēmu (HTML/CSS/JS) un augstas veiktspējas Go aizmugursistēmu. Funkcijas ietver audio failu lejupielādi, vietējo dziesmu sarakstu pārvaldību un pielāgotu, strukturētu datubāzi skaņdarbu metadatu indeksēšanai un kešatmiņai.</p>
+                            <h3 class="reveal-text">GIPHY pārlūks (Flutter & Dart):</h3>
+                            <p class="reveal-text">Izstrādāta responsīva mobilā un darbvirsmas GIF attēlu pārlūkošanas lietotne, integrējot GIPHY trešās puses API. Implementēta asinhrona datu ielāde no API, vienmērīga bezgalīgā ritināšana (infinite scrolling) un starpplatformu saskarnes (UI) renderēšana.</p>
+                            <h3 class="reveal-text">Minecraft daudzspēlētāju sinhronizācijas modifikācija (Java):</h3>
+                            <p class="reveal-text">Veikta Minecraft pamata mehāniku reversā inženierija un modificēšana, lai reāllaikā sinhronizētu dzīvības (health), izsalkuma un inventāra stāvokli starp diviem spēlētājiem. Realizēta servera-klienta stāvokļu pārvaldība un tīkla pakotņu (packet) manipulācija.</p>
+                            <h3 class="reveal-text">Pretinieka spēles AI un loģika (Python):</h3>
+                            <p class="reveal-text">Darbojos kā galvenais algoritmu izstrādātājs universitātes komandas projektā, izstrādājot MiniMax algoritmu matemātiskai stratēģijas spēlei. Programmēta rekursīvā lēmumu koka loģika, stāvokļu novērtēšanas funkcijas un spēles stāvokļa mutācijas noteikumi.</p>
+                            <h3 class="reveal-text">2D platformeris (GameMaker Language):</h3>
+                            <p class="reveal-text">Mācību projekta ietvaros izstrādāta un programmēta spēlētāja fizika, sadursmju noteikšana (collision detection) un līmeņu progresijas sistēmas.</p>
+                            <h3 class="reveal-text">ECS arhitektūras testētājs (Rust & Bevy):</h3>
+                            <p class="reveal-text">Izstrādāts platformera prototips, lai novērtētu uz datiem balstītas Entity Component System (ECS) veiktspēju un struktūru Bevy dzinējā.</p>
+                        </div>
+                        <div class="divider-container">
+                            <hr class="divider">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-portfolio" style="display: none;">
+                <div class="main-content-portfolio">
+                    
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pAudio">Audio Player Project</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <img src="chess.png" alt="Chess" class="pIcon">
+                            <div class="pTitle" id="pChess">Chess Game Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <img src="chess.png" alt="Weather" class="pIcon">
+                            <div class="pTitle" id="pWeather">Weather App Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder2">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder3">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder4">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder5">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder6">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder7">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder8">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder9">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder10">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder11">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                    <div class="pWrapper">
+                        <div class="pContent">
+                            <div class="pTitle" id="pPlaceholder12">Placeholder Project</div>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+            <div class="page" id="page-audio-player" style="display: none;">Audio Player</div>
+            <div class="page" id="page-chess" style="display: none;">
+                <div class="chess-window">
+                    <div class="chess-board-wrapper">
+                        <div id="chess-board-actual"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-settings" style="display: none;">Settings</div>
         </main>
     </div>
 
