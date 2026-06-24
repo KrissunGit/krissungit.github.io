@@ -192,7 +192,9 @@
 .chess-board-wrapper {
     width: clamp(280px, 75vmin, 600px); 
     height: clamp(280px, 75vmin, 600px); 
-    background-color: rgba(22, 22, 22, 0.85); 
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
@@ -255,7 +257,9 @@
 .pWrapper {
     width: clamp(260px, 100%, 20rem); 
     height: 20rem; 
-    background-color: rgba(22, 22, 22, 0.85); 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
