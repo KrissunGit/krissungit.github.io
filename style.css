@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -9,31 +8,40 @@
 .wrapper {
     display: flex;
     z-index: 1;
-    height: 100vh;
-    background:transparent
+    min-height: 100vh; 
+    background: transparent;
 }
 
+/* ==========================================================================
+   SIDEBAR NAVIGATION 
+   ========================================================================== */
 .sidebar {
     width: 4rem;
     height: 100vh;
-    background-color: #202020;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
     color: #ffffff;
     padding-top: 20px;
     transition: width 0.3s ease;
     position: fixed; 
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
     white-space: nowrap;
     box-shadow: inset -50px 0 60px -50px rgba(0, 0, 0, 1);
+    z-index: 10;
 }
 
 .sidebar:hover {
-    width: 10rem;
+    width: 12rem;
 }
 
 .sidebar h2 {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 1.25rem;
     letter-spacing: 1px;
 }
 
@@ -60,12 +68,14 @@
     overflow: hidden;
     list-style: none;
     padding-left: 5px;
-    background-color: #161616;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
     transition: max-height 0.3s ease, opacity 0.2s ease;
 }
 
 .sidebar:hover .dropdown:hover .submenu {
-    max-height: 200px;
+    max-height: 12.5rem;
     opacity: 1;
 }
 
@@ -80,39 +90,45 @@
 }
 
 .sidebar ul li a:hover {
-    background-color: #303030;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
     border-left: 4px solid #ffffff;
 }
 
+/* ==========================================================================
+   MAIN MAIN CONTENT CONTAINERS
+   ========================================================================== */
 .main-content {
     flex: 1;
-    padding: 40px;
-    background-color: rgba(10, 10, 10, 0.5);
+    padding: 40px 20px; 
     color: white;
-    margin-left: 4rem;
+    margin-left: 4rem; 
 }
 
 .text-container {
-    max-width: 1000px;
+    max-width: 62.5rem;
     margin: 0 auto;
-    padding: 100px;
-    font-size: 1.5em;
+    padding: clamp(1.5rem, 5vw, 4rem); 
+    font-size: clamp(1rem, 1.2vw, 1.2rem); 
     color: white;
-    background-color: rgba(20, 20, 20, 0.8); 
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border-radius: 1.25rem;
     box-sizing: border-box;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .text-container h1 {
-    margin-bottom: 30px;
-    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
 }
 
 .text-container h3 {
     margin-top: 25px;  
     margin-bottom: 10px;   
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
     color: #ffffff;
 }
 
@@ -138,45 +154,49 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15vh;
-    max-width: 1000px;
+    height: 10vh;
+    max-width: 62.5rem;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .divider {
     width: 100%;
     border: none;
-    border-top: 2px solid rgba(255, 255, 255, 0.3); 
+    border-top: 2px solid rgba(255, 255, 255, 0.2); 
 }
 
 .html-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     border: none;
     z-index: -1;
     pointer-events: none; 
 }
 
+/* ==========================================================================
+   CHESS COMPONENT
+   ========================================================================== */
 .chess-window {
     width: 100%;
-    height: 100%;
+    min-height: 70vh;
     display: flex;
     justify-content: center; 
     align-items: center;  
+    padding: 20px 0;
 }
 
 .chess-board-wrapper {
-    width: 60vmin;  
-    height: 60vmin; 
+    width: clamp(280px, 75vmin, 600px); 
+    height: clamp(280px, 75vmin, 600px); 
     background-color: rgba(22, 22, 22, 0.85); 
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
-    padding: 20px;  
-    
+    padding: 12px;  
     display: flex;
 }
 
@@ -196,24 +216,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.5rem;
+    font-size: clamp(1.2rem, 4vmin, 3rem); 
     text-shadow: 0 0 2px rgb(255, 255, 255);
     user-select: none; 
 }
 
-.square.light {
-    background-color: #efd3a1; 
-}
-
-.square.dark {
-    background-color: #190f10;
-}
+.square.light { background-color: #efd3a1; }
+.square.dark { background-color: #190f10; }
 
 .square.highlight {
     position: relative;
     cursor: pointer;
 }
-
 .square.highlight::after {
     content: "";
     position: absolute;
@@ -225,8 +239,21 @@
     box-shadow: inset 0 0 15px rgba(52, 152, 219, 0.8);
 }
 
+/* ==========================================================================
+   PORTFOLIO COMPONENT 
+   ========================================================================== */
+.main-content-portfolio {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 25px;
+    padding: 40px 20px;
+    justify-content: center;
+    color: white;
+    margin-left: 4rem;
+}
+
 .pWrapper {
-    width: 20rem;  
+    width: clamp(260px, 100%, 20rem); 
     height: 20rem; 
     background-color: rgba(22, 22, 22, 0.85); 
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -235,22 +262,11 @@
     padding: 20px;  
     box-sizing: border-box; 
     display: flex;
-    align-items:end;
     transition: transform 0.3s ease;
 }
 
 .pWrapper:hover {
-    transform: scale(1.05);
-}
-
-.main-content-portfolio {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    color: white;
-    margin-left: 4rem;
+    transform: scale(1.03);
 }
 
 .pContent {
@@ -258,25 +274,144 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     width: 100%;
     height: 100%;
 }
 
 .pIcon {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 85%;
+    max-height: 75%;
     object-fit: contain;
     border-radius: 4px;
-    filter: grayscale(50%);
+    filter: grayscale(40%);
     transition: all 0.3s ease;
 }
 
 .pWrapper:hover .pIcon {
-    transform: scale(1.05);
+    transform: scale(1.03);
     filter: grayscale(0%);
 }
 
 .pTitle {
     font-weight: bold;
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   MEDIA QUERY: SMARTPHONES & MOBILE SCREEN OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        overflow: visible !important;
+    }
+
+    .sidebar .dropdown {
+        position: relative;
+    }
+
+    .sidebar .submenu {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(10px) saturate(180%);
+        z-index: 20;
+        justify-content: flex-start;
+        
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .sidebar .submenu li {
+        width: 100%;
+        text-align: left;
+    }
+
+    .sidebar .submenu li a {
+        padding: 12px 15px;
+    }
+
+    .sidebar:hover {
+        width: 100%; 
+    }
+
+    .sidebar h2 {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .sidebar ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; 
+        gap: 5px;
+    }
+
+    .sidebar ul li {
+        flex: 1;
+        min-width: 70px;
+        text-align: center;
+    }
+
+    .sidebar ul li a {
+        padding: 10px 5px;
+        font-size: 0.85rem;
+    }
+
+    .sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px) saturate(180%);
+        -webkit-backdrop-filter: blur(10px) saturate(180%);
+        border-left: none; 
+    }
+
+    .sidebar .dropdown:hover .submenu {
+        max-height: 15rem; 
+        opacity: 1;
+        margin-top: 5px;
+    }
+
+    .sidebar ul li a::before {
+        content: attr(data-long) !important; 
+        font-weight: bold;
+    }
+    
+    .sidebar:hover ul li a::before {
+        content: attr(data-long) !important;
+    }
+
+    .sidebar .dropdown.active .submenu {
+        max-height: 15rem;
+        opacity: 1;
+        margin-top: 5px; 
+    }
+
+
+    .main-content, 
+    .main-content-portfolio {
+        margin-left: 0 !important;
+        padding: 20px 10px;
+    }
+
+    .text-container {
+        border-radius: 0.75rem;
+    }
 }
