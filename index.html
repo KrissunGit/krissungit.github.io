@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <script src="index.js" defer type="module"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -21,7 +21,8 @@
                     <a href="#portfolio" data-short="P" data-long="Portfolio" id="nav-portfolio"></a>
                     <ul class="submenu">
                         <li><a href="#audio-player" data-short="A" data-long="Audio Player" id="nav-audio-player"></a></li>
-                        <li><a href="#chess" data-short="C" data-long="Chess" id="nav-chess"></a></li>
+                        <li><a href="#weather" data-short="W" data-long="Weather App" id="nav-weather"></a></li>
+                        <li><a href="#spaceinvaders" data-short="S" data-long="Space Invaders" id="nav-spaceinvaders"></a></li>
                     </ul>
                 </li>
 
@@ -84,15 +85,15 @@
         <main class="main-content">
             <div class="page" id="page-main">
                 <div class="page" id="english-main" >
-                    <h1 class="reveal-text" style="margin-top: 20rem; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);" data-delay="0">Welcome to my personal website!</h1>
-                    <p class="reveal-text" data-delay="0" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);">
+                    <h1 class="reveal-text" style="margin-top: 20rem;" data-delay="0">Welcome to my personal website!</h1>
+                    <p class="reveal-text" data-delay="0">
                         This is a space where I showcase my projects,
                     </p>
-                    <p class="reveal-text" data-delay="0" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);">
+                    <p class="reveal-text" data-delay="0">
                         And it acts as a hub for my professional and personal information.
                     </p>
 
-                    <p class="reveal-text" style="margin-top: 15rem; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);" data-delay="200" >
+                    <p class="reveal-text" style="margin-top: 15rem;" data-delay="200">
                         Use the sidebar to navigate through the different sections of the website.
                     </p>
                 </div>
@@ -384,11 +385,35 @@
 
                 </div> 
             </div>
-            <div class="page" id="page-audio-player" style="display: none;">Audio Player</div>
+            <div class="page" id="page-audio-player" style="display: none;">
+                <h2 class="reveal-text" style="margin-top: 2rem; text-align: center;" data-delay="0">Audio Player Project</h2>
+                <div class="audio-player-container">
+                    <div class="audio-player-window">
+                        <button id="importBtn">Import Music</button>
+                        <div id="song-list" class="song-list"></div>
+                    </div>
+                </div>
+            </div>
             <div class="page" id="page-chess" style="display: none;">
                 <div class="chess-window">
                     <div class="chess-board-wrapper">
                         <div id="chess-board-actual"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-weather" style="display: none;">
+                <h2 class="reveal-text" style="margin-top: 2rem; text-align: center;" data-delay="0">Weather App</h2>
+                <div class="weather-container">
+                    <div class="weather-window">
+
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-spaceinvaders" style="display: none;">
+                <h2 class="reveal-text" style="margin-top: 2rem; text-align: center;" data-delay="0">Space Invaders</h2>
+                <div class="spaceinvaders-container">
+                    <div class="spaceinvaders-window">
+                        
                     </div>
                 </div>
             </div>

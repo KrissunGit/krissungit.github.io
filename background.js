@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 
 let width = 0;
 let height = 0;
+let resizeTimeout;
 
 const particles = [];
 
@@ -14,11 +15,23 @@ function resize() {
     canvas.height = height;
 }
 
-window.addEventListener("resize", resize);
+window.addEventListener("resize", () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        createParticles(Math.floor(width / height * 200));
+    }, 300);
+});
+
 resize();
 
 function createParticles(count) {
     particles.length = 0;
+    console.log("Creating particles:", count);
 
     for (let i = 0; i < count; i++) {
         particles.push({
@@ -30,7 +43,7 @@ function createParticles(count) {
     }
 }
 
-createParticles(400);
+createParticles(Math.floor(width/height * 200));
 
 function update() {
     for (const p of particles) {
@@ -87,6 +100,7 @@ function animate() {
     drawParticles();
 
     requestAnimationFrame(animate);
+
 }
 
 animate();
